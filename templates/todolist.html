@@ -1,0 +1,22 @@
+<table align="center">
+    <tr>
+        <td>Todolist</td>
+    </tr>
+    <tr>
+        <td>
+            <form action="/addtodolist/" method="POST">{% csrf_token %}
+                <input type="text" name="content">
+                <input type="submit" name="submit" value="Add">
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>{% for pk in all_items %}
+            {{pk.content}}
+            <form action="/deletetodolist/{{pk.id}}/" method="POST">{% csrf_token %}
+                <input type="submit" name="submit" value="Delete">
+            </form>
+            {% endfor %}
+        </td>
+    </tr>
+</table>
